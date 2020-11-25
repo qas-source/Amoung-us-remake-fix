@@ -1,0 +1,76 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/scripts/MainMenu.gd" type="Script" id=1]
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Menu" type="VBoxContainer" parent="."]
+margin_left = 200.0
+margin_top = 150.0
+margin_right = 1004.0
+margin_bottom = 618.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Name" type="HBoxContainer" parent="Menu"]
+margin_right = 804.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="Menu/Name"]
+margin_top = 5.0
+margin_right = 110.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 110, 0 )
+text = "Enter Name:"
+valign = 1
+
+[node name="NameEntry" type="LineEdit" parent="Menu/Name"]
+margin_left = 114.0
+margin_right = 804.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="IP" type="HBoxContainer" parent="Menu"]
+margin_top = 28.0
+margin_right = 804.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="Menu/IP"]
+margin_top = 5.0
+margin_right = 110.0
+margin_bottom = 19.0
+rect_min_size = Vector2( 110, 0 )
+text = "Enter Server IP:"
+valign = 1
+
+[node name="IPEntry" type="LineEdit" parent="Menu/IP"]
+margin_left = 114.0
+margin_right = 804.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+placeholder_text = "Not Required For Hosting Games"
+
+[node name="HostButton" type="Button" parent="Menu"]
+margin_top = 56.0
+margin_right = 804.0
+margin_bottom = 260.0
+size_flags_vertical = 3
+text = "Host Game"
+
+[node name="JoinButton" type="Button" parent="Menu"]
+margin_top = 264.0
+margin_right = 804.0
+margin_bottom = 468.0
+size_flags_vertical = 3
+text = "Join Game"
+[connection signal="text_changed" from="Menu/Name/NameEntry" to="." method="_on_NameEntry_text_changed"]
+[connection signal="text_changed" from="Menu/IP/IPEntry" to="." method="_on_IPEntry_text_changed"]
+[connection signal="pressed" from="Menu/HostButton" to="." method="_on_HostButton_pressed"]
+[connection signal="pressed" from="Menu/JoinButton" to="." method="_on_JoinButton_pressed"]

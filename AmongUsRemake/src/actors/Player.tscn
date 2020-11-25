@@ -1,0 +1,70 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/sprite frames/player.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://src/scripts/Player.gd" type="Script" id=2]
+[ext_resource path="res://src/dynamic fonts/PlayerNameFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/lights/light_shape.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 341, 488 )
+
+[node name="Player" type="KinematicBody2D"]
+light_mask = -2147483647
+z_index = 2
+collision_mask = 2
+script = ExtResource( 2 )
+speed = Vector2( 2600, 2600 )
+light_energy = 0.609
+
+[node name="NameLabel" type="Label" parent="."]
+light_mask = 2
+margin_left = -250.0
+margin_top = -575.0
+margin_right = 250.0
+margin_bottom = -505.0
+grow_horizontal = 2
+grow_vertical = 0
+rect_min_size = Vector2( 1600, 250 )
+rect_scale = Vector2( 1, 1.2 )
+rect_pivot_offset = Vector2( 250, 70 )
+custom_fonts/font = ExtResource( 3 )
+text = "Placeholder"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerFader" type="Light2D" parent="."]
+scale = Vector2( 1.751, 1.751 )
+z_index = 1
+texture = ExtResource( 4 )
+texture_scale = 4.0
+mode = 3
+range_z_max = 1
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -0.00012207, 0.00012207 )
+scale = Vector2( 3.501, 3.501 )
+z_index = 1
+texture = ExtResource( 4 )
+texture_scale = 2.0
+range_z_max = 1
+shadow_enabled = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+light_mask = -2147483646
+frames = ExtResource( 1 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 24 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2( 11.4, 11.4 )
+smoothing_enabled = true
+smoothing_speed = 3.7
